@@ -1,0 +1,46 @@
+# --- Ignore Python virtual environment ---
+venv/
+.env/
+.venv/
+env/
+ENV/
+Include/
+Lib/
+Scripts/
+pyvenv.cfg
+
+# --- Python cache & compiled files ---
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+*.pyo
+
+# --- Test cache ---
+pytest_cache/
+.tox/
+.nox/
+
+# --- IDE / Editor settings ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Jupyter Notebook checkpoints ---
+.ipynb_checkpoints/
+
+# --- Packaging ---
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# --- Mypy / Pyright ---
+.mypy_cache/
+.pytype/
+.pyre/
+
+# --- OS / Misc ---
+*.DS_Store
+Thumbs.db
