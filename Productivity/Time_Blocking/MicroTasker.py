@@ -15,7 +15,7 @@ def Configure():
     About()
     print('Configuration: ')
     Num_of_tasks = int(input('Enter Number of Tasks: '))
-    Time_per_task = int(input('Enter Time per Task: '))
+    Time_per_task = int(input('Enter Time per Task (min): '))
     hrs,mins = ts.getTotal(Num_of_tasks, Time_per_task)
     print(f'\nTotal Time: {hrs} {'Hours' if hrs > 1 else 'Hour'} {mins} Minutes')
 
@@ -31,8 +31,8 @@ def Scedule():
     Total_loop,tick,tasks = Configure()
     os.system('cls')
     target = len(tasks)
-    count  = 0
-    timer.execute_task(tasks,tick)
+    print('Timer Started. Stay Focused!\n')
+    timer.execute_task(tasks,target,tick)
 
 
 

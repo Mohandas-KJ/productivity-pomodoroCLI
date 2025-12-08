@@ -1,14 +1,14 @@
 import Productivity.Commons.SpinnerTimer as stimer
-import winsound,threading
+import winsound,threading,sys
 import Productivity.Time_Blocking.MicroTasker as mt
 
 count = 0
 
-def execute_task(tasks,per_task):
+def execute_task(tasks,target,per_task):
     global count
-    target = len(tasks)
 
     if count > target:
+        print('\nCONGRADULATIONS JOB DONE')
         return
     
     temp = tasks.pop(0)
@@ -16,8 +16,11 @@ def execute_task(tasks,per_task):
     winsound.Beep(1000,500)
     print(f'Current Tasks: {temp}')
     stimer.spintimer(per_task)
+    sys.stdout.write("\033[2k\r")
+    sys.stdout.flush()
+    count+=1
     print(f'Completed: {temp}')
     winsound.Beep(1500,700)
 
     if count < target:
-        threading.Timer(2,execute_task,args=(tasks,per_task)).start()
+        threading.Timer(2,execute_task,args=(tasks,target,per_task)).start()
