@@ -14,10 +14,10 @@ def execute_task(tasks,target,per_task):
     temp = tasks.pop(0)
 
     winsound.Beep(1000,500)
-    print(f'Current Tasks: {temp}')
+    print(f'Current Task: {temp}')
     stimer.spintimer(per_task)
     count+=1
-    print(f'Completed: {temp}')
+    print(f'Completed: {temp}!')
     winsound.Beep(1500,700)
 
     if count < target:
