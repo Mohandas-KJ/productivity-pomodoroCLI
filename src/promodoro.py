@@ -1,7 +1,7 @@
 #This is the Main Program where manny Productivity Techniques are included
 #Imports (Library and Modules)
 import time
-#from src.Time_Blocking.MicroTasker
+import Productivity.Time_Blocking.MicroTasker as ms
 
 def start():
     print('Welcome to Promodoro CLI!')
@@ -13,7 +13,7 @@ def start():
 
     match(choice):
         case 1:
-            
+            ms.Configure()
         case _:
             print('PLease choose the appropriate one!')
 
