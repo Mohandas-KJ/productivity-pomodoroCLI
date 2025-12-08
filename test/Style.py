@@ -11,6 +11,5 @@ def spinner_timer(seconds):
     sys.stdout.write("\033[2K\r")
     sys.stdout.flush()
 
-    print("Done!")
+    print("Done!\n")
 
-spinner_timer(10)
