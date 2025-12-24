@@ -1,7 +1,7 @@
 #This is the Main Program where manny Productivity Techniques are included
 #Imports (Library and Modules)
 import time
-import Productivity.Time_Blocking.MicroTasker as ms
+from productivity.time_blocking import micro_tasker as ms # Done imports wrongly. Following up with right one!
 
 def start():
     print('Welcome to Promodoro CLI!')

@@ -1,6 +1,5 @@
-import Productivity.Commons.SpinnerTimer as stimer
+from productivity.commons import spinner_timer as stimer
 import threading,sys,platform,os,time
-import Productivity.Time_Blocking.MicroTasker as mt
 
 #Cross-platform Beep helper
 def beep(frequency, tp_ms):

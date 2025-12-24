@@ -1,7 +1,7 @@
 import os
 import time
-import Productivity.Commons.TimeSheet as ts
-import Productivity.Time_Blocking.MTTimer as timer
+from productivity.commons import time_sheet as ts
+from productivity.time_blocking import mt_timer as timer
 
 #To give Intro about the technique
 def About():
