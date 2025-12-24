@@ -1,5 +1,5 @@
 import os
-import time
+import time, platform
 from productivity.commons import time_sheet as ts
 from productivity.time_blocking import mt_timer as timer
 
@@ -11,7 +11,7 @@ def About():
     "perfect for modern developers and learners.\n")
 
 def Configure():
-    os.system('cls')
+    Clear_Screen()
     About()
     print('Configuration: ')
     Num_of_tasks = int(input('Enter Number of Tasks: '))
@@ -29,10 +29,16 @@ def Configure():
     
 def Scedule():
     Total_loop,tick,tasks = Configure()
-    os.system('cls')
+    Clear_Screen()
     target = len(tasks)
     print('Timer Started. Stay Focused!\n')
     timer.execute_task(tasks.copy(),target,tick*60)
+
+def Clear_Screen():
+    if platform.system() == "Windows":
+        os.system('cls')
+    else:
+        os.system('clear')
 
 
 
