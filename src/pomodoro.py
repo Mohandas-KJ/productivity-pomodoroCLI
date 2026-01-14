@@ -2,7 +2,24 @@
 #Imports (Library and Modules)
 import time
 import sys
+import argparse
 from productivity.time_blocking import micro_tasker as ms # Done imports wrongly. Following up with right one!
+
+# Argument Parser
+def a_parser():
+    pars = argparse.ArgumentParser(
+        description="Pomodoro CLI - Productivity CLI Timer"
+    )
+
+    #Silent arg
+    pars.add_argument("--silent",action="store_true",
+                      help="Disable sound alerts")
+    
+    #tone arg
+    pars.add_argument("--tone",type=int,default=1,
+                      help="Choose tone flavour")
+    
+    return pars.parse_args()
 
 def start():
     print('Welcome to Promodoro CLI!')
