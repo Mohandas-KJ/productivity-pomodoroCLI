@@ -13,4 +13,3 @@ def isLinux():
 def isTermux():
     if "ANDROID_ROOT" in os.environ or "com.termux" in os.environ.get("TERM",""):
         return True
-
