@@ -3,6 +3,7 @@
 import time
 import sys
 import argparse
+from productivity.commons.intro_warning import warning
 from productivity.time_blocking import micro_tasker as ms # Done imports wrongly. Following up with right one!
 
 # Argument Parser
@@ -12,7 +13,7 @@ def a_parser():
     )
 
     #Silent arg
-    pars.add_argument("--silent",action="store_true",
+    pars.add_argument("--silent",action="store_true",default=False,
                       help="Disable sound alerts")
     
     #tone arg
@@ -24,6 +25,9 @@ def a_parser():
 program_args = a_parser() # Get user args
 
 def start():
+
+    warning(program_args.silent)
+
     print('Welcome to Promodoro CLI!')
     print('\nChoose Your Productivity Method: ')
     print('1. Micro Time Blocking (Musk\'s Method)\n')

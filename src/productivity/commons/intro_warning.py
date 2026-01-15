@@ -5,7 +5,7 @@
 import time
 from productivity.commons import platrad as pt
 
-def Warning(is_silent):
+def warning(is_silent):
     if is_silent and pt.isWindows():
         print('Warning: Silent Mode Active! System will use short-beep for reminders')
         time.sleep(3)
