@@ -1,29 +1,6 @@
 from productivity.commons import spinner_timer as stimer
 import threading,sys,platform,os,time
 
-#Cross-platform Beep helper
-def beep(frequency, tp_ms,vibration):
-
-    #Check if Windows and Play the sound
-    try:
-        if platform.system() == "Windows":
-            import winsound
-            winsound.Beep(frequency,tp_ms)
-            return
-    except Exception:
-        pass
-
-    #Additional Vibration feature if it's on Andoid's Termux
-    try:
-        if "ANDROID_ROOT" in os.environ or "com.termux" in os.environ.get("TERM",""):
-            os.system(f"termux-vibrate -d {vibration}")
-            return
-    except Exception:
-        pass
-
-    #Fallback, if none is possible
-    print("\a",end="",flush=True)
-
 def execute_task(tasks, target, time_per_task, is_silent, tone, interval_time=2, run_async=False):
 
     def worker():
@@ -39,7 +16,7 @@ def execute_task(tasks, target, time_per_task, is_silent, tone, interval_time=2,
 
             #Play a Sound
             try:
-                beep(1500,700,200)
+                # beep(1500,700,200)
             except Exception:
                 pass
 
@@ -56,7 +33,7 @@ def execute_task(tasks, target, time_per_task, is_silent, tone, interval_time=2,
             completed += 1
             print(f'Completed: {temp} ({completed}/{target})')
             try:
-                beep(1000,500,800)
+                # beep(1000,500,800)
             except Exception:
                 pass
         
