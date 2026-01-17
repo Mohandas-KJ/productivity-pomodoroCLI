@@ -1,6 +1,7 @@
 # This file Contains the essentials for OS Detection
 import platform
-import os
+import os, subprocess
+from productivity.commons import config
 
 def isWindows():
     if platform.system() == "Windows":
@@ -31,3 +32,19 @@ def Clear_Screen():
         os.system('cls')
     else:
         os.system('clear')
+
+def Termux_api_support():
+    try:
+        out  = subprocess.run(
+            ["termux-info"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True
+        ).stdout
+
+        config.IS_TERMUX = True
+        config.TERMUX_API_SUPPORTED = "Termux:API" in out
+    
+    except FileNotFoundError:
+        config.IS_TERMUX = False
+
