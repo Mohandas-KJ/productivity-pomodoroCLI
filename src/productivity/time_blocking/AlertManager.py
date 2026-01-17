@@ -4,7 +4,6 @@
 # Imports
 from productivity.commons import platrad as pt
 import os, subprocess
-import simpleaudio as sa
 import threading
 from pathlib import Path
 

@@ -1,5 +1,4 @@
 from pathlib import Path
-import simpleaudio as sa
 import threading, subprocess
 
 BASE_DIR = Path(__file__).resolve().parents[1]
