@@ -11,10 +11,13 @@ def warning(is_silent):
         time.sleep(3)
         pt.Clear_Screen()
     elif is_silent and pt.isLinux():
-        print('Warning: Silent mode is not supported in Linux Yet! System will use the default tone')
-        time.sleep(3)
-        pt.Clear_Screen()
-    elif is_silent and pt.isTermux():
-        print('Warning: Silent Mode Active! Android will vibrate for reminders')
-        time.sleep(3)
-        pt.Clear_Screen()
+        if pt.isTermux():
+            print('Warning: Silent Mode Active! Android will vibrate for reminders')
+            time.sleep(3)
+            pt.Clear_Screen()
+        else:
+            print('Warning: Silent mode is not supported in Linux Yet! System will use the default tone')
+            time.sleep(3)
+            pt.Clear_Screen()
+    elif not is_silent and pt.isTermux():
+        pass
