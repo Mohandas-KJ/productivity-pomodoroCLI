@@ -58,17 +58,20 @@ def playAudio(tid,seq):
                 f"(New-Object Media.SoundPlayer '{path_s}').PlaySync()"
             ])
         elif pt.isLinux():
-            subprocess.Popen(['aplay',path_s],
-                         stderr=subprocess.DEVNULL,
-                         stdout=subprocess.DEVNULL)
+
+            if pt.isTermux():
+                if seq:
+                    vibrate(200)
+                else:
+                    vibrate(800)
+                os.system(f"termux-media-player play {path_s}")
+            else:
+                subprocess.Popen(['aplay',path_s],
+                                 stderr=subprocess.DEVNULL,
+                                 stdout=subprocess.DEVNULL)
         elif pt.isMac():
             subprocess.Popen(["afplay",path_s])
-        elif pt.isTermux():
-            if seq:
-                vibrate(200)
-            else:
-                vibrate(800)
-            os.system(f"termux-media-player play {path_s}")
+            
     except Exception:
         print("\a",end="",flush=True)
         print('There is a Problem with your Sound Card')
@@ -81,11 +84,12 @@ def Alert(is_silent, tone, seq):
         else:
             beep(1000,500)
     elif is_silent and pt.isLinux():
-        playAudio(tone)
-    elif is_silent and pt.isTermux():
-        if seq:
-            vibrate(200)
+        if pt.isTermux():
+             if seq:
+                vibrate(200)
+             else:
+                vibrate(800)
         else:
-            vibrate(800)
+            playAudio(tone,seq)
     else:
         playAudio(tone,seq)
