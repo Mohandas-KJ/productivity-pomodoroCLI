@@ -3,6 +3,7 @@
 
 # Imports
 from productivity.commons import platrad as pt
+from productivity.commons import config
 import os, subprocess
 import threading
 from pathlib import Path
@@ -64,7 +65,9 @@ def playAudio(tid,seq):
                     vibrate(200)
                 else:
                     vibrate(800)
-                os.system(f"termux-media-player play {path_s}")
+                
+                if config.IS_TERMUX and config.TERMUX_API_SUPPORTED:
+                    os.system(f"termux-media-player play {path_s}")
             else:
                 subprocess.Popen(['aplay',path_s],
                                  stderr=subprocess.DEVNULL,

@@ -4,6 +4,7 @@
 # Imports
 import time
 from productivity.commons import platrad as pt
+from productivity.commons import config
 
 def warning(is_silent):
     if is_silent and pt.isWindows():
@@ -20,4 +21,10 @@ def warning(is_silent):
             time.sleep(3)
             pt.Clear_Screen()
     elif not is_silent and pt.isTermux():
-        pass
+
+        pt.Termux_api_support()
+
+        if config.IS_TERMUX and not config.TERMUX_API_SUPPORTED:
+            print('Warning: Termux-API is not yet supported! Alerts sounds will fail')
+            time.sleep(3)
+            pt.Clear_Screen
